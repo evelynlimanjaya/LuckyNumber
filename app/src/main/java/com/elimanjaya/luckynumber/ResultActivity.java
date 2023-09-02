@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -27,22 +26,16 @@ public class ResultActivity extends AppCompatActivity {
         String name = i.getStringExtra("name");
 
         int randomNum = generateRandomNumber();
-        luckyNumberTxt.setText(Integer.toString(randomNum));
+        luckyNumberTxt.setText(String.format("%s", randomNum));
 
-        shareBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                shareData(name, randomNum);
-            }
-        });
+        shareBtn.setOnClickListener(view -> shareData(name, randomNum));
     }
 
     public int generateRandomNumber(){
         Random r = new Random();
         int upperLimit = 1000;
-        int randomNumber = r.nextInt(upperLimit);
 
-        return  randomNumber;
+        return r.nextInt(upperLimit);
     }
 
     private void shareData(String username, int num){

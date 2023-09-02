@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,18 +23,15 @@ public class MainActivity extends AppCompatActivity {
         btn = findViewById(R.id.button);
         textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name = editText.getText().toString();
+        btn.setOnClickListener(view -> {
+            String name = editText.getText().toString();
 
-                Intent i = new Intent(getApplicationContext(), ResultActivity.class);
+            Intent i = new Intent(getApplicationContext(), ResultActivity.class);
 
-                i.putExtra("name", name);
+            i.putExtra("name", name);
 
-                startActivity(i);
+            startActivity(i);
 
-            }
         });
     }
 }
